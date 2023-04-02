@@ -1,10 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { AuthService } from './auth/auth.service';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: `
+    <app-header></app-header>
+    <div class="col-xs-6">
+      <router-outlet></router-outlet>
+    </div>
+  `,
+  styles: []
 })
-export class AppComponent {
-  title = 'ng-recipe-app';
+export class AppComponent implements OnInit {
+  title = "ng-recipe-app";
+
+  private authService = inject(AuthService);
+
+  ngOnInit(): void {
+    this.authService.autoLogin();
+  }
+
 }

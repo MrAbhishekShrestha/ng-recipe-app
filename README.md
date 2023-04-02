@@ -1,5 +1,16 @@
 # NgRecipeApp
 
+A recipe app that allows users to create, read, update and delete their recipes. 
+
+Features: 
+1. Firebase Email Authentication
+2. Persistent user state in localStorage
+3. Firebase realtime database for data storage
+
+Built while following the Udemy Course: [the-complete-guide-to-angular-2](https://www.udemy.com/course/the-complete-guide-to-angular-2/) by Maximilian Schwarzmüller. 
+
+<hr>
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.8.
 
 ## Development server
