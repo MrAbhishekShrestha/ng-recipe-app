@@ -5,17 +5,19 @@ import { Router } from "@angular/router";
 import { LoadingSpinnerComponent } from "../shared/loading-spinner.component";
 import { AuthForm, AuthResponse, AuthService } from "./auth.service";
 import { Observable } from "rxjs";
+import { AlertComponent } from "../shared/alert.component";
 
 @Component({
   selector: 'app-auth',
   standalone: true,
-  imports: [FormsModule, LoadingSpinnerComponent, NgIf],
+  imports: [FormsModule, LoadingSpinnerComponent, NgIf, AlertComponent],
   template: `
     <div class="row">
       <div class="col-xs-12 col-md-6 col-md-offset-3">
-        <div class="alert alert-danger" *ngIf="error">
+        <!-- <div class="alert alert-danger" *ngIf="error">
           <p>{{ error }}</p>
-        </div>
+        </div> -->
+        <app-alert [message]="error" (close)="onAlertClosed()" *ngIf="error"></app-alert>
         <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoading; else loading">
           <div class="form-group">
             <label for="email">Email</label>
@@ -75,6 +77,10 @@ export class AuthComponent {
         console.error(err);
       },
     });
+  }
+
+  onAlertClosed() {
+    this.error = null;
   }
 
 }
